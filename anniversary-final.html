@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dr. Jyoti & Dr. Sandeep | 1st Anniversary</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Cormorant+Garamond:wght@300;400;600&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #2C5F7F;
+            --accent: #4A9BB5;
+            --dark: #1A3A52;
+            --cream: #FAF8F3;
+            --gold: #C9A961;
+        }
+
+        body {
+            font-family: 'Cormorant Garamond', serif;
+            background: var(--cream);
+            color: #2A2A2A;
+            line-height: 1.6;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1.5rem 5%;
+            background: rgba(250, 248, 243, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #2A2A2A;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+        }
+
+        .menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background: var(--primary);
+        }
+
+        /* Hero */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            padding: 2rem;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            animation: fadeIn 1s ease;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            letter-spacing: 3px;
+            margin-bottom: 1rem;
+            animation: fadeIn 1.5s ease;
+        }
+
+        .hero-date {
+            font-size: 1.2rem;
+            animation: fadeIn 2s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Countdown */
+        .countdown {
+            background: var(--primary);
+            color: white;
+            padding: 4rem 5%;
+            text-align: center;
+        }
+
+        .countdown h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .countdown-timer {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .countdown-item {
+            background: rgba(255,255,255,0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            min-width: 120px;
+        }
+
+        .countdown-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--gold);
+            display: block;
+        }
+
+        .countdown-label {
+            font-size: 1rem;
+            margin-top: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* Section */
+        section {
+            padding: 6rem 5%;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            margin-bottom: 3rem;
+            opacity: 0.8;
+        }
+
+        /* Story */
+        .story-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .story-text h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+
+        .story-text p {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .story-image {
+            width: 100%;
+            height: 400px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 8rem;
+            box-shadow: 0 20px 60px rgba(44, 95, 127, 0.3);
+        }
+
+        /* Timeline */
+        .timeline {
+            background: linear-gradient(to bottom, var(--cream), #E8D5D2);
+        }
+
+        .timeline-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .timeline-item {
+            display: flex;
+            margin-bottom: 3rem;
+            gap: 2rem;
+        }
+
+        .timeline-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            flex: 1;
+        }
+
+        .timeline-date {
+            color: var(--gold);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-content h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Event Details */
+        .event-details {
+            background: var(--dark);
+            color: white;
+        }
+
+        .event-details .section-title {
+            color: white;
+        }
+
+        .event-details .section-subtitle {
+            color: rgba(255,255,255,0.8);
+        }
+
+        .event-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .event-card {
+            background: rgba(255,255,255,0.1);
+            padding: 2.5rem 2rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .event-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .event-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .event-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+            color: var(--gold);
+        }
+
+        .event-card p {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .highlight {
+            display: block;
+            margin-top: 1rem;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--gold);
+        }
+
+        /* Wishes */
+        .wishes {
+            background: var(--cream);
+        }
+
+        .wishes-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .wish-card {
+            background: white;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border-radius: 15px;
+            border-left: 4px solid var(--gold);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+
+        .wish-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .wish-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: white;
+            font-weight: 600;
+        }
+
+        .wish-author {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            color: var(--primary);
+        }
+
+        .wish-message {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            font-style: italic;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 4rem 5%;
+            text-align: center;
+        }
+
+        .footer-hearts {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-names {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-text {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.8;
+        }
+
+        .footer-divider {
+            width: 100px;
+            height: 2px;
+            background: var(--gold);
+            margin: 2rem auto;
+        }
+
+        .footer-info {
+            opacity: 0.6;
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 70%;
+                height: 100vh;
+                background: var(--cream);
+                flex-direction: column;
+                padding: 5rem 2rem;
+                transition: right 0.3s;
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .story-container {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">J & S</div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#story">Our Story</a></li>
+                <li><a href="#timeline">Timeline</a></li>
+                <li><a href="#event">Event Details</a></li>
+                <li><a href="#wishes">Wishes</a></li>
+            </ul>
+            <div class="menu-toggle" id="menuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <div style="font-size: 3rem; margin-bottom: 1rem;">✦</div>
+            <h1>Celebrating One Year</h1>
+            <p class="hero-subtitle">OF LOVE & TOGETHERNESS</p>
+            <p class="hero-date">Dr. Jyoti & Dr. Sandeep Verma</p>
+            <p class="hero-date">Join us in celebration</p>
+        </div>
+    </section>
+
+    <!-- Countdown -->
+    <section class="countdown">
+        <h2>Counting Down to Our Celebration</h2>
+        <div class="countdown-timer">
+            <div class="countdown-item">
+                <span class="countdown-number" id="days">0</span>
+                <span class="countdown-label">Days</span>
+            </div>
+            <div class="countdown-item">
+                <span class="countdown-number" id="hours">0</span>
+                <span class="countdown-label">Hours</span>
+            </div>
+            <div class="countdown-item">
+                <span class="countdown-number" id="minutes">0</span>
+                <span class="countdown-label">Minutes</span>
+            </div>
+            <div class="countdown-item">
+                <span class="countdown-number" id="seconds">0</span>
+                <span class="countdown-label">Seconds</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Story -->
+    <section id="story">
+        <h2 class="section-title">Our Journey</h2>
+        <p class="section-subtitle">A Beautiful Beginning</p>
+        <div class="story-container">
+            <div class="story-text">
+                <h3>Where It All Began</h3>
+                <p>One year ago, two hearts united in a celebration of love, commitment, and shared dreams. Dr. Jyoti and Dr. Sandeep embarked on a beautiful journey together, filled with laughter, compassion, and unwavering support.</p>
+                <p>From the sacred vows exchanged to the countless memories created, every moment has been a testament to the strength of their bond. Their love story is one of mutual respect, understanding, and the joy of building a life together.</p>
+                <p>As we celebrate their first anniversary, we honor not just the day they were married, but the incredible partnership they've built and the beautiful future that awaits them.</p>
+            </div>
+            <div class="story-image">💕</div>
+        </div>
+    </section>
+
+    <!-- Timeline -->
+    <section class="timeline" id="timeline">
+        <h2 class="section-title">Our First Year Together</h2>
+        <p class="section-subtitle">Precious Moments & Milestones</p>
+        <div class="timeline-container">
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-date">January 21, 2025</div>
+                    <h3>The Beginning</h3>
+                    <p>The day we said "I do" and began our journey as partners for life. Surrounded by loved ones, our hearts were full of joy and promise.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-date">March 2025</div>
+                    <h3>First Adventures</h3>
+                    <p>Our first vacation together, exploring new places and creating unforgettable memories. Every sunrise and sunset became more beautiful when experienced together.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-date">June 2025</div>
+                    <h3>Growing Together</h3>
+                    <p>Supporting each other through professional achievements and personal growth. Learning that the strength of our partnership lies in how we uplift one another.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-date">December 2025</div>
+                    <h3>Building Our Home</h3>
+                    <p>Creating a space filled with love, laughter, and warmth. Every corner of our home reflects the love we share and the dreams we're building together.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Event Details -->
+    <section class="event-details" id="event">
+        <h2 class="section-title">Celebration Details</h2>
+        <p class="section-subtitle">Join us for an evening of joy and memories</p>
+        <div class="event-grid">
+            <div class="event-card">
+                <div class="event-icon">📅</div>
+                <h3>Date</h3>
+                <p>Tuesday</p>
+                <span class="highlight">January 21, 2026</span>
+            </div>
+            <div class="event-card">
+                <div class="event-icon">⏰</div>
+                <h3>Time</h3>
+                <p>Evening Celebration</p>
+                <span class="highlight">Details in invitation</span>
+            </div>
+            <div class="event-card">
+                <div class="event-icon">📍</div>
+                <h3>Venue</h3>
+                <p>GO's Mess-228 Bn<br>CRPF</p>
+                <span class="highlight">Fandiguda</span>
+            </div>
+            <div class="event-card">
+                <div class="event-icon">🎉</div>
+                <h3>Dress Code</h3>
+                <p>Elegant & Festive</p>
+                <span class="highlight">Formal Attire</span>
+            </div>
+            <div class="event-card">
+                <div class="event-icon">🍽️</div>
+                <h3>Dinner</h3>
+                <p>Delicious cuisine</p>
+                <span class="highlight">Multi-course meal</span>
+            </div>
+            <div class="event-card">
+                <div class="event-icon">🎵</div>
+                <h3>Entertainment</h3>
+                <p>Music & Dancing</p>
+                <span class="highlight">Live Performance</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Wishes -->
+    <section class="wishes" id="wishes">
+        <h2 class="section-title">Heartfelt Wishes</h2>
+        <p class="section-subtitle">Blessings from loved ones</p>
+        <div class="wishes-container">
+            <div class="wish-card">
+                <div class="wish-header">
+                    <div class="wish-avatar">V</div>
+                    <div class="wish-author">Vaibhav Verma</div>
+                </div>
+                <p class="wish-message">Wishing you both a lifetime filled with endless love, joy, and beautiful memories. May your bond grow stronger with each passing day. Happy 1st Anniversary!</p>
+            </div>
+            <div class="wish-card">
+                <div class="wish-header">
+                    <div class="wish-avatar">S</div>
+                    <div class="wish-author">Shalini Verma</div>
+                </div>
+                <p class="wish-message">Your love story is truly inspiring and fills our hearts with joy. May you continue to support and cherish each other through all of life's adventures. Congratulations on this special milestone!</p>
+            </div>
+            <div class="wish-card">
+                <div class="wish-header">
+                    <div class="wish-avatar">D</div>
+                    <div class="wish-author">Divyanshu Verma</div>
+                </div>
+                <p class="wish-message">Happy Anniversary! Your partnership is a beautiful example of love, respect, and commitment. Wishing you many more years of happiness and togetherness. God bless you both!</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-hearts">💕 ✦ 💕</div>
+        <div class="footer-names">Dr. Jyoti & Dr. Sandeep</div>
+        <div class="footer-text">Celebrating One Year of Marriage</div>
+        <div class="footer-divider"></div>
+        <p class="footer-info">
+            January 21, 2026<br>
+            We look forward to celebrating with you!
+        </p>
+    </footer>
+
+    <script>
+        // Mobile Menu
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Countdown Timer
+        function updateCountdown() {
+            const eventDate = new Date('2026-01-21T20:00:00').getTime();
+            const now = new Date().getTime();
+            const distance = eventDate - now;
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById('days').textContent = days;
+            document.getElementById('hours').textContent = hours;
+            document.getElementById('minutes').textContent = minutes;
+            document.getElementById('seconds').textContent = seconds;
+
+            if (distance < 0) {
+                document.querySelector('.countdown-timer').innerHTML = '<h3 style="font-size: 2rem;">🎉 The Celebration Has Begun! 🎉</h3>';
+            }
+        }
+
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+
+        // Close mobile menu on link click
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+    </script>
+</body>
+</html>
